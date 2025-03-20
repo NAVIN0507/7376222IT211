@@ -3,7 +3,7 @@ import React from 'react'
 
 const NavBar = () => {
   return (
-<header className='h-14 rounded-b-md w-full bg-white'>
+<header className='h-14 rounded-b-md w-full bg-white shadow-2xl'>
     <nav className='flex justify-between items-center p-3'>
         <h1 className='text-black font-mono text-2xl'>MNS POSTS</h1>
         <ul className='space-x-7 text-black hidden md:flex '>

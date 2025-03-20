@@ -1,5 +1,5 @@
 import { Router } from "express";
-import User from "../models/users.model";
+import User from "../models/users.model.js";
 
 const userRoute = Router();
 
@@ -40,4 +40,36 @@ userRoute.post("/addUser" , async(req , res)=>{
         }
 })
 
+userRoute.post("/insertOne" , async(req , res)=>{
+    let {id , name} = req.body;
+    try {
+        const postUser = await User.create({
+            id:id,
+            name:name
+        })
+        if(!postUser){
+            res.send("sorry some thing went wrong")
+        }
+        res.send(postUser)
+    } catch (error) {
+        console.log(error)
+    }
+})
+userRoute.get("/getallUsers" , async(req , res)=>{
+    try {
+        const users = await User.find();
+        res.send(users)
+    } catch (error) {
+        console.log(error)
+        res.send("Internal server error")
+    }
+})
+userRoute.get("/getUserbyId/:id" , async(req , res)=>{
+    try {
+        
+    } catch (error) {
+        console.log(error)
+        res.send("Internal server error")
+    }
+})
  export default  userRoute;

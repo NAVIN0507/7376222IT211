@@ -55,5 +55,16 @@ postRoutes.post("/addManyPosts" , async(req , res)=>{
       res.status(500).send("Internal server error");
     }
 })
+postRoutes.get("/getComByusertId/:id/comment", async (req, res) => {
+  let id = req.params.id;
+  try {
+    const comment = await Posts.findOne({
+    userid: id,
+    });
+    res.send(comment);
+  } catch (error) {
+    res.send("Internal server error");
+  }
+});
 
 export default postRoutes;

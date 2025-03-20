@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import connectToDB from "./db/mongoose.js"
 import userRoute from "./routes/user.route.js"
 import postRoutes from "./routes/posts.route.js"
+import commentsRoutes from "./routes/comments.route.js"
 const app = express()
 dotenv.config();
 app.use(express.json())
@@ -13,7 +14,8 @@ app.get("/" , (req , res)=>{
     res.send("test")
 })
 app.use("/api/v1/users" , userRoute);
-app.use("/api/v1/posts" , postRoutes)
-
+app.use("/api/v1/posts" , postRoutes);
+app.use("/api/v1/comments" , commentsRoutes);
 app.listen(8000 , ()=>{console.log("Connected to port 3000")})
 
+export default app
